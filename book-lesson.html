@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        
+        <title>Book Your First Lesson - RDS</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+        <link rel="stylesheet" href="css/main.css">
+        
+    </head>
+    
+    <body class="font-light bg-secondary-0">
+        <!--navbar, add container to below nav if an issue occurs-->
+        <nav class="md:px-spacing11 md:py-spacing04 relative mx-auto px-spacing06 py-spacing02 w-full">
+            <!--flex container-->
+            <div class="flex items-center justify-between">
+                <!--logo-->
+                <div class="w-40">
+                    <a href="index.html"><img src="img/rds-logo.png"></a>
+                </div>
+                <!--menu items-->
+                <div class="hidden lg:flex">
+                    <div class="container space-x-spacing05 tracking-sm capitalize font-normal text-secondary-500">
+                        <a href="lessons-and-prices.html" class="hover:text-primary-600">lessons &amp; prices</a>
+                        <a href="areas-covered.html" class="hover:text-primary-600">areas covered</a>
+                        <a href="testimonials.html" class="hover:text-primary-600">testimonials</a>
+                        <a href="faq.html" class="uppercase hover:text-primary-600">faq</a>
+                        <a href="contact.html" class="hover:text-primary-600">contact</a>
+                        <!--button-->
+                        <button onclick="window.location.href='book-lesson.html';" class="text-neutrals-white bg-primary-500 px-7 py-3.5 capitalize rounded-xsm tracking-lg hover:bg-primary-300">book now</button>
+                    </div>
+                </div>
+                
+            </div>
+        
+        </nav>
+        
+        <section class="md:p-spacing11 p-spacing06 bg-secondary-0 flex items-center flex-col">
+            <h1 class="md:text-h1 text-mob-h1 capitalize font-extrabold">booking a lesson</h1>
+            <p class="hidden md:flex">Book your lesson with us in 6 easy steps!</p>
+        </section>
+        
+        <section class="md:p-spacing11 p-spacing06 space-y-spacing06">
+            <form class="flex flex-col gap-y-spacing09 w-full md:w-3/5 items-stretch">
+                <span class="space-y-spacing03">
+                    <p>1. What <span class="font-bold">type of lesson</span> would you like to book?</p>
+                    <div class="grid md:grid-cols-2 gap-4 md:w-3/4">
+
+                        <input type="radio" id="standard" name="lesson" value="standard" class="peer/standard hidden">
+                        <label for="standard" class="bg-secondary-0 text-secondary-600 border border-1 border-secondary-200 hover:border-secondary-300 rounded-sm p-spacing05 capitalize text-center font-medium cursor-pointer hover:bg-secondary-50 peer-checked/standard:ring-2 peer-checked/standard:ring-accent-dark peer-checked/standard:bg-accent-light peer-checked/standard:text-accent-dark">
+                            <div class="block">
+                                <span>standard</span>
+                            </div>
+                        </label>
+                        
+                        
+                        <input type="radio" id="intensive" name="lesson" value="intensive" class="peer/intensive hidden">
+                        <label for="intensive" class="bg-secondary-0 text-secondary-600 border border-1 border-secondary-200 hover:border-secondary-300 rounded-sm p-spacing05 capitalize text-center font-medium cursor-pointer hover:bg-secondary-50 peer-checked/intensive:ring-2 peer-checked/intensive:ring-accent-dark peer-checked/intensive:bg-accent-light peer-checked/intensive:text-accent-dark">
+                            <div class="block">
+                                <span>intensive</span>
+                            </div>
+                        </label>
+                        
+                    </div>
+                </span>
+                
+                <span class="space-y-spacing03">
+                    <p>2. How many <span class="font-bold">hours</span> would you like to book?</p>
+                    <select class="p-spacing03 border border-secondary-200 rounded-sm bg-secondary-0 w-full">
+                        <option selected>Select -</option>
+                        <option>1 hour</option>
+                        <option>1.5 hours</option>
+                        <option>2 hours</option>
+                        <option>2.5 hours</option>
+                        <option>3 hours</option>
+                        <option>3.5 hours</option>
+                    </select>
+                </span>
+                
+                
+                <span class="space-y-spacing03">
+                    <p>3. What is your chosen <span class="font-bold">transmission</span> type?</p>
+                    <div class="grid md:grid-cols-2 gap-4 md:w-3/4">
+
+                        <input type="radio" id="auto" name="transmission" value="auto" class="peer/automatic hidden">
+                        <label for="auto" class="bg-secondary-0 text-secondary-600 border border-1 border-secondary-200 hover:border-secondary-300 rounded-sm p-spacing05 capitalize text-center font-medium cursor-pointer hover:bg-secondary-50 peer-checked/automatic:ring-2 peer-checked/automatic:ring-accent-dark peer-checked/automatic:bg-accent-light peer-checked/automatic:text-accent-dark">
+                            <div class="block">
+                                <span>automatic</span>
+                            </div>
+                        </label>
+                        
+                        
+                        <input type="radio" id="manual" name="transmission" value="manual" class="peer/manual hidden">
+                        <label for="manual" class="bg-secondary-0 text-secondary-600 border border-1 border-secondary-200 hover:border-secondary-300 rounded-sm p-spacing05 capitalize text-center font-medium cursor-pointer hover:bg-secondary-50 peer-checked/manual:ring-2 peer-checked/manual:ring-accent-dark peer-checked/manual:bg-accent-light peer-checked/manual:text-accent-dark">
+                            <div class="block">
+                                <span>manual</span>
+                            </div>
+                        </label>
+                        
+                    </div>
+                </span>
+                
+                <span class="space-y-spacing03">
+                    <p>4. What <span class="font-bold">date</span> and <span class="font-bold">time</span> would suit you best to have your first lesson?</p>
+                    <input type="datetime-local" id="date" class="p-spacing03 border border-secondary-200 rounded-sm bg-secondary-0 w-full">
+                </span>
+                
+                <span class="space-y-spacing03">
+                    <p>5. What is your  <span class="font-bold">name</span>?</p>
+                    <input type="text" id="name" placeholder="Enter your name" class="p-spacing03 border border-secondary-200 rounded-sm bg-secondary-0 w-full">
+                </span>
+                
+                <span class="space-y-spacing03">
+                    <p>6. What is your <span class="font-bold">phone number</span>?</p>
+                    <input type="tel" id="tel" placeholder="Enter your phone number" class="p-spacing03 border border-secondary-200 rounded-sm bg-secondary-0 w-full">
+                </span>
+                
+                
+                <input type="submit" value="send message" class="capitalize bg-primary-500 text-neutrals-white px-spacing06 py-spacing03 rounded-full tracking-lg hover:bg-primary-300 font-medium self-start">
+                
+ 
+            </form>
+            
+        </section>
+        
+        <!--footer-->
+        <section id="footer" class="bg-secondary-900 text-neutrals-white p-spacing06 flex flex-col gap-y-spacing09 md:flex-row md:justify-between">
+            <div class="flex flex-col gap-y-spacing09 md:flex-row md:gap-x-spacing11">
+                <div>
+                    <a href="index.html"><img src="img/footer-logo.png"></a>
+                </div>
+                <div class="flex flex-col capitalize gap-y-spacing05">
+                    <a href="lessons-and-prices.html" class="hover:text-primary-300">lessons &amp; prices</a>
+                    <a href="faq.html" class="uppercase hover:text-primary-300">FAQ</a>
+                    <a href="areas-covered.html" class="hover:text-primary-300">areas covered</a>
+                    <a href="testimonials.html" class="hover:text-primary-300">testimonials</a>
+                    <a href="contact.html" class="hover:text-primary-300">contact</a>
+                </div>
+                
+                <div class="flex flex-col gap-y-spacing05">
+                    <p >07956 560 294</p>
+                    <p >07956 459 240</p>
+                    <a href="mailto:info@remydrivingschool.com">info@remydrivingschool.com</a>
+                    <div class="text-h5 flex flex-row gap-x-spacing04">
+                        <a href="#" class="hover:text-primary-300"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-primary-300"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-y-spacing05">
+                <div class="capitalize flex flex-row gap-x-spacing01">
+                    <a href="#" class="hover:text-primary-300">copyright notice</a>
+                    <p>&#124;</p>
+                    <a href="#" class="hover:text-primary-300">privacy policy</a>
+                </div>
+                <p>&#169; RDS - All Rights Reserved</p>
+            </div>
+            
+        </section>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    </body>
+</html>

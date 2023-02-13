@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./*.html'],
+  content: ["./*.html"],
+    
   theme: {
     
-      
       letterSpacing: {
           sm:'0.005em', //0.5%
           md:'0.04em', //4%
@@ -32,11 +32,12 @@ module.exports = {
       
       
       screens: {
-          sm: '480px',
-          md: '768px',
-          lg: '976px',
-          xl: '1440px',
+          'sm': '480px', /*480px*/
+          'md': '768px', /*768px*/
+          'lg': '1024px', /*first:976px*/
+          'xl': '1280px', /*1440px*/
       },
+      
       borderRadius:{
           xsm: "4px",
           sm: "10px",
@@ -44,7 +45,8 @@ module.exports = {
           full: "999px",
       },
       
-      colors:{
+      colors: {
+  
           'primary': {
               0: '#FFE0E0',
               50: '#FFCACA',
@@ -60,7 +62,7 @@ module.exports = {
               
           },
           
-          'secondary':{
+          'secondary': {
               0: '#FAFAFA',
               50: '#E7E7E7',
               100: '#D5D5D5',
@@ -79,10 +81,16 @@ module.exports = {
               white: '#FFFFFF',
           },
           
+          'accent':{
+              light:'#d2ddfb',
+              dark:'#1C54E9',  
+          },
+          
       },
       
     extend: {
         spacing: {
+            'spacing00': '0px',
             'spacing01': '5px',
             'spacing02': '10px',
             'spacing03': '15px',
@@ -95,8 +103,8 @@ module.exports = {
             'spacing10': '60px',
             'spacing11': '70px',
             'spacing12': '100px',
-        }
+        },
     },
   },
-  plugins: [],
+  plugins: []
 }
