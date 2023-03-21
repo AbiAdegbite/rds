@@ -9,6 +9,28 @@
         <title>Contact US - RDS</title>
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        
+        <style>
+        .invalid-feedback,
+        .empty-feedback {
+          display: none;
+        }
+
+        .was-validated :placeholder-shown:invalid ~ .empty-feedback {
+          display: block;
+        }
+
+        .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+          display: block;
+        }
+
+        .is-invalid,
+        .was-validated :invalid {
+          border-color: #CB1B27;
+        }
+        </style>
+    
     </head>
     
     <body class="font-light bg-secondary-0">
@@ -56,28 +78,39 @@
                     </div>
                 </div>
                 
-                <form class="bg-neutrals-white text-secondary-500 p-spacing04 rounded-sm space-y-spacing05 md:w-1/2 md:px-spacing06 md:py-spacing07">
-                    <div class="space-y-spacing01">
-                        <label class="font-medium text-secondary-500 capitalize">name</label><br>
-                        <input type="text" placeholder="Enter your name..." required class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400">
-                    </div>
+                <form id="form" action="https://api.web3forms.com/submit" method="POST" class="bg-neutrals-white text-secondary-500 p-spacing04 rounded-sm space-y-spacing05 md:w-1/2 md:px-spacing06 needs-validation">
                     
-                     <div class="space-y-spacing01">
-                        <label class="font-medium text-secondary-500 capitalize">email</label><br>
-                        <input type="text" placeholder="Enter your email..." required class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400">
-                    </div>
-                    
-                     <div class="space-y-spacing01">
-                        <label class="font-medium text-secondary-500 capitalize">phone number</label><br>
-                        <input type="text" placeholder="Enter your phone number..." required class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400">
-                    </div>
+                    <input type="hidden" name="access_key" value="3470167f-181a-45ff-9425-c9ef5e16d8a4" class="hidden">
+                    <input type="hidden" name="subject" value="New Enquiry via remydrivingschool.com" class="hidden">
+                    <input type="checkbox" name="botcheck" id=""class="hidden">
                     
                     <div class="space-y-spacing01">
-                        <label class="font-medium text-secondary-500 capitalize">message</label><br>
-                        <textarea type="text" placeholder="Enter your message..." rows="5" required class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400"></textarea>
+                        <label for="name" class="font-medium text-secondary-500">Name</label><br>
+                        <input id="name" type="text" placeholder="Enter your name..." required minlength="2" class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400">
+                        <span class="hidden text-status-error">Please provide your first name.</span>
+                    </div> 
+
+                     <div class="space-y-spacing01">
+                        <label for="email" class="font-medium text-secondary-500">Email</label><br>
+                        <input id="email" type="email" placeholder="Enter your email..." required pattern="^(.+)@(.+)$" class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400">
+                         <span class="hidden text-status-error">Please provide your first name.</span>
+                    </div>
+                    
+                     <div class="space-y-spacing01 formGroup">
+                        <label for="phoneno" class="font-medium text-secondary-500">Phone Number</label><br>
+                        <input id="phoneno" type="tel" placeholder="Enter your phone number..." required minlength="10" class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400">
+                         <span class="hidden text-status-error">Please provide your first name.</span>
+                    </div>
+                    
+                    <div class="space-y-spacing01 formGroup">
+                        <label for="msg" class="font-medium text-secondary-500">Message</label><br>
+                        <textarea id="msg" type="text" placeholder="Enter your message..." required rows="5" minlength="10" class="bg-secondary-0 p-spacing03 w-full caret-accent-dark rounded-xsm border border-secondary-100 focus:border-accent-dark focus:outline-accent-dark placeholder:text-secondary-400"></textarea>
+                        <span class="hidden text-status-error">Please provide your first name.</span>
                         
                     </div>
                     <input type="submit" value="send message" class="capitalize bg-primary-500 text-neutrals-white px-spacing06 py-spacing03 rounded-full tracking-lg hover:bg-primary-300 font-medium">
+                    
+                    <p id="result" class="text-secondary-500"></p>
                 </form>
                 
             </div>
@@ -120,5 +153,77 @@
             
         </section>
         
+        <script>
+    (function () {
+  "use strict";
+  /*
+   * Form Validation
+   */
+
+  // Fetch all the forms we want to apply custom validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+  const result = document.getElementById("result");
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          form.querySelectorAll(":invalid")[0].focus();
+        } else {
+          /*
+           * Form Submission using fetch()
+           */
+          event.preventDefault();
+          event.stopPropagation();
+          
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+          result.innerHTML = "Please wait...";
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: json,
+          })
+            .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                result.innerHTML = json.message;
+                result.classList.remove("text-secondary-500");
+                result.classList.add("text-status-success");
+              } else {
+                console.log(response);
+                result.innerHTML = json.message;
+                result.classList.remove("text-secondary-500");
+                result.classList.add("text-status-error");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              result.innerHTML = "Something went wrong!";
+            })
+            .then(function () {
+              form.reset();
+              form.classList.remove("was-validated");
+              setTimeout(() => {
+                result.style.display = "none";
+              }, 5000);
+            });
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
+</script>
     </body>
 </html>

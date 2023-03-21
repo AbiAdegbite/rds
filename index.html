@@ -32,7 +32,26 @@
                         <button onclick="window.location.href='book-lesson.html';" class="text-neutrals-white bg-primary-500 px-7 py-3.5 capitalize rounded-xsm tracking-lg hover:bg-primary-300">book now</button>
                     </div>
                 </div>
+                <!--hamburger icon-->
+                <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+                    <span class="hamburger-top"></span>
+                    <span class="hamburger-middle"></span>
+                    <span class="hamburger-bottom"></span>
+                </button>
+            </div>
+            
+            <!--Mobile Menu-->
+            <div class="md:hidden">
+                <div id="menu" class="absolute hidden flex-col items-center self-end bg-neutrals-white left-0 right-0 sm:w-auto sm:self-center p-spacing08 space-y-spacing07 capitalize drop-shadow-md">
+                    <a href="lessons-and-prices.html" class="hover:text-primary-600">lessons &amp; prices</a>
+                    <a href="areas-covered.html" class="hover:text-primary-600">areas covered</a>
+                    <a href="testimonials.html" class="hover:text-primary-600">testimonials</a>
+                    <a href="faq.html" class="uppercase hover:text-primary-600">faq</a>
+                    <a href="contact.html" class="hover:text-primary-600">contact</a>
+                    <!--button-->
+                    <button onclick="window.location.href='book-lesson.html';" class="text-neutrals-white bg-primary-500 px-7 py-3.5 capitalize rounded-xsm tracking-lg hover:bg-primary-300">book now</button>
                 
+                </div>
             </div>
         
         </nav>
@@ -228,6 +247,6 @@
             
         </section>
         
-        
+        <script src="js/script.js"></script>
     </body>
 </html>
